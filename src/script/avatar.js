@@ -28,15 +28,17 @@ class Avatar {
 
     addEventListeners(avatar) {
         let $avatar = $(avatar)
-        $avatar.find('.avatar').on('keypress', function (e) {
+
+
+        $avatar.find('.name-input').on('keypress', function (e) {
             if (e.keyCode === 13) {
-                console.log("hihi");
                 const name = $(this).val();
                 const firstLetter = name.charAt(0).toUpperCase();
-                // get brother element
-                $(this).siblings('.avatar').text(firstLetter);
-                // read only
-                $(this).attr('readonly', true);
+                // get parent brother element
+                const avatar = $(this).parent().prev();
+                avatar.text(firstLetter);
+                // disable input
+                $(this).attr('disabled', true);
             }
         });
 
@@ -45,6 +47,7 @@ class Avatar {
             input.attr('disabled', false);
             input.focus();
         });
+
         return $avatar;
     }
 
