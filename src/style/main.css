@@ -1,7 +1,11 @@
+body {
+    background-size: cover;
+}
+
 #feudContainer {
     margin: 5vh 6% 0;
     /* padding: 15%; */
-    background-color: #000;
+    /* background-color: #000; */
     height: 90vh;
     display: flex;
     flex-direction: row;
@@ -25,24 +29,29 @@
 .teamBox {
     /* width: 10%; */
     height: auto;
-    background-color: red;
+    background-color: #e9ecef;
     /* padding: 5%; */
     margin: 2%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    border-radius: 20px;
 }
 
 .optionBox {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    background-color: #dee2e6;
+    border-radius: 10px;
+    border: 5px solid #dee2e6;
 }
 
 #inputBox {
     width: 90%;
     height: 100%;
     background-color: yellow;
+    background-color: #dee2e6;
 }
 
 #inputField {
@@ -74,7 +83,7 @@
 #avatarBoxRight {
     padding: 15px;
     height: 80%;
-    background-color: purple;
+    /* background-color: purple; */
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -101,9 +110,9 @@
 
 #scorebarLeft,
 #scorebarRight {
-    width: 72%;
+    /* width: 72%; */
     height: 11%;
-    background-color: pink;
+    /* background-color: pink; */
     display: flex;
     flex-direction: row;
     justify-content: space-between;

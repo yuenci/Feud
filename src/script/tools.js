@@ -6,6 +6,15 @@ class Tools {
     static gamesList = [];
     static answersList = [];
     static currentQuestion = 1;
+
+    static init() {
+        // set background image
+        let body = document.querySelector('body');
+        body.style.backgroundImage = `url(../public/bgImage.jpeg)`;
+
+    }
+
+
     static clearFeudAnswers() {
         const feud = document.querySelectorAll('#feudBox');
         const childs = feud[0].childNodes;
@@ -28,6 +37,16 @@ class Tools {
         const blueTeamGamer3 = new Avatar('blue');
         const blueTeamGamer4 = new Avatar('blue');
 
+        // get avatar width
+        let avatarobj = document.getElementsByClassName('avatar')[0];
+        let avatarComputedStyleWidth = window.getComputedStyle(avatarobj).width;
+
+        $(".avatar").css("height", avatarComputedStyleWidth);
+        //$(".name-input").css("width", avatarComputedStyleWidth);
+        // console.log(avatarComputedStyleWidth);
+        // set avatar box height
+        // let avatarBox = document.querySelector('.avatarBox');
+        // avatarBox.style.height = avatarWidth + 'px';
     }
 
 

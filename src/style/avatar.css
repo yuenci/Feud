@@ -4,6 +4,7 @@
     display: flex;
     flex-direction: column;
     background-color: transparent !important;
+    text-align: center;
 }
 
 .avatar {
@@ -30,6 +31,8 @@
     border-radius: 5px;
     border: 0px solid #ccc;
     padding: 0 10px;
+    font-size: 18px;
+    font-weight: bold;
 }
 
 .name-input:focus {

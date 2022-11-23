@@ -16,7 +16,6 @@ class Avatar {
     createElement() {
         const avatar = document.createElement('div');
         avatar.classList.add('avatar-container');
-        avatar.style.background = this.color;
         avatar.innerHTML = `
             <div class="avatar"></div>
             <div class="name-input-container">
@@ -53,11 +52,11 @@ class Avatar {
 
     render($avatar) {
         if (this.color === 'red') {
-            $avatar.find('.avatar').css('background', 'red');
+            $avatar.find('.avatar').css('background', '#ff6b6b');
             $("#avatarBoxLeft").append($avatar);
 
         } else if (this.color === 'blue') {
-            $avatar.find('.avatar').css('background', 'blue');
+            $avatar.find('.avatar').css('background', '#339af0');
             $("#avatarBoxRight").append($avatar);
         } else {
             throw new Error('Invalid color');
