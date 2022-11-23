@@ -1,18 +1,31 @@
-let container = document.createElement('div');
-container.id = 'container';
-document.body.appendChild(container);
-container.innerHTML = `
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite App</title>
-  </head>
-  <body>
-    <div id="app"></div>
-    <script type="module" src="/main.js"></script>
-  </body>
-</html>
+
+
+
+class Frame {
+  static render() {
+    let container = document.createElement('div');
+    container.id = 'feudContainer';
+    document.body.appendChild(container);
+    container.innerHTML = `
+<div class="teamBox">
+            <div id="scorebarLeft"></div>
+            <div id="avatarBoxLeft"></div>
+        </div>
+        <div id="mainBox">
+            <div id="feudBox"></div>
+            <div class="optionBox">
+                <div id="inputBox">
+                    <input type="text" id="inputField" placeholder="Enter your answer here">
+                </div>
+                <div id="okayBtn" class="btn">
+                    <div>OK</div>
+                </div>
+            </div>
+        </div>
+        <div class="teamBox">
+            <div id="scorebarRight"></div>
+            <div id="avatarBoxRight"></div>
+        </div>
 `;
+  }
+}
