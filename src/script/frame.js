@@ -8,7 +8,10 @@ class Frame {
         document.body.appendChild(container);
         container.innerHTML = `
             <div class="teamBox">
-                <div id="scorebarLeft"></div>
+                <div id="scorebarLeft">
+                    <div>Points: </div>
+                    <div id="scorered">0</div>
+                </div>
                 <div id="avatarBoxLeft"></div>
                 </div>
                 <div id="mainBox">
@@ -26,7 +29,10 @@ class Frame {
                     </div>
                 </div>
                 <div class="teamBox">
-                    <div id="scorebarRight"></div>
+                    <div id="scorebarRight">
+                        <div>Points: </div>
+                        <div id="scoreblue">0</div>    
+                    </div>
                     <div id="avatarBoxRight"></div>
             </div>
         `;

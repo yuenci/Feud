@@ -48,6 +48,13 @@ class Tools {
         }
 
     }
+
+    static updateScore(color) {
+        let score = document.querySelector(`#score${color}`);
+        let scoreNum = parseInt(score.innerHTML);
+        scoreNum += 100;
+        score.innerHTML = scoreNum.toString();
+    }
 }
 
 export { Tools };
