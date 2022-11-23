@@ -27,10 +27,14 @@ class Question {
 
 
     checkAnswer(ans) {
-        if (ans === this.correct) {
-            console.log('Correct answer!');
+        if (ans === this.answer) {
+            //console.log('Correct answer!');
+            this.correct = true;
+            return true;
         } else {
-            console.log('Wrong answer. Try again :)');
+            //console.log('Wrong answer. Try again :)');
+            this.correct = false;
+            return false;
         }
     }
 }
