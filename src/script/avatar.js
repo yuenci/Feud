@@ -1,9 +1,10 @@
 import '../style/avatar.css'
 
 class Avatar {
-    constructor(name, color) {
+    constructor(color, name = "none") {
         this.name = name;
         this.color = color;
+        this.init();
     }
 
     init() {
@@ -17,7 +18,7 @@ class Avatar {
         avatar.classList.add('avatar-container');
         avatar.style.background = this.color;
         avatar.innerHTML = `
-            <div class="avatar">B</div>
+            <div class="avatar"></div>
             <div class="name-input-container">
                 <input type="text" class="name-input">
             </div>
@@ -48,8 +49,11 @@ class Avatar {
 
     render($avatar) {
         if (this.color === 'red') {
+            $avatar.find('.avatar').css('background', 'red');
             $("#avatarBoxLeft").append($avatar);
+
         } else if (this.color === 'blue') {
+            $avatar.find('.avatar').css('background', 'blue');
             $("#avatarBoxRight").append($avatar);
         } else {
             throw new Error('Invalid color');
