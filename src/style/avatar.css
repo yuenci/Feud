@@ -1,13 +1,14 @@
 .avatar-container {
     display: flex;
     flex-direction: column;
+    background-color: transparent !important;
 }
 
 .avatar {
     width: 100px;
     height: 100px;
     border-radius: 50% !important;
-    background-color: blue;
+    /* background-color: blue; */
     margin-bottom: 10px;
     text-align: center;
     font-size: 50px;

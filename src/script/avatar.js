@@ -30,6 +30,7 @@ class Avatar {
         let $avatar = $(avatar)
         $avatar.find('.avatar').on('keypress', function (e) {
             if (e.keyCode === 13) {
+                console.log("hihi");
                 const name = $(this).val();
                 const firstLetter = name.charAt(0).toUpperCase();
                 // get brother element
