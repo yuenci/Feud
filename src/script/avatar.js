@@ -1,7 +1,8 @@
 import '../style/avatar.css'
+import { Tools } from './tools';
 
 class Avatar {
-    constructor(color, name = "none") {
+    constructor(color, name = null) {
         this.name = name;
         this.color = color;
         this.init();
@@ -28,16 +29,18 @@ class Avatar {
     addEventListeners(avatar) {
         let $avatar = $(avatar)
 
+        //console.log(avatar.children);
+        // get child elements
+        let nameAvatar = avatar.children[0];
+        let nameInput = avatar.children[1].children[0];
 
-        $avatar.find('.name-input').on('keypress', function (e) {
+
+        nameInput.addEventListener('keyup', (e) => {
             if (e.keyCode === 13) {
-                const name = $(this).val();
-                const firstLetter = name.charAt(0).toUpperCase();
-                // get parent brother element
-                const avatar = $(this).parent().prev();
-                avatar.text(firstLetter);
-                // disable input
-                $(this).attr('disabled', true);
+                this.name = nameInput.value;
+                const firstLetter = this.name.charAt(0).toUpperCase();
+                nameAvatar.innerHTML = firstLetter;
+                $(nameInput).attr('disabled', true);
             }
         });
 
@@ -47,8 +50,31 @@ class Avatar {
             input.focus();
         });
 
+
+        nameAvatar.addEventListener('click', () => {
+            $("#current-gamer").css("background", $(nameAvatar).css("background"));
+            $("#current-gamer").text($(nameAvatar).text());
+            Tools.currentTeam = this.color;
+
+            if (Tools.currentTeam === 'red') {
+                // change background color
+                $("#teamBox-left").css("background", "#495057");
+                $("#teamBox-right").css("background", "#e9ecef");
+
+                $("#scorebarLeft").css("color", "#fff");
+                $("#scorebarRight").css("color", "black");
+            } else if (Tools.currentTeam === 'blue') {
+                $("#teamBox-left").css("background", "#e9ecef");
+                $("#teamBox-right").css("background", "#495057");
+
+                $("#scorebarLeft").css("color", "black");
+                $("#scorebarRight").css("color", "#fff");
+            }
+        });
         return $avatar;
     }
+
+
 
     render($avatar) {
         if (this.color === 'red') {

@@ -7,7 +7,7 @@ class Frame {
         container.id = 'feudContainer';
         document.body.appendChild(container);
         container.innerHTML = `
-            <div class="teamBox">
+            <div class="teamBox" id="teamBox-left">
                 <div id="scorebarLeft">
                     <div>Points: </div>
                     <div id="scorered">0</div>
@@ -20,6 +20,7 @@ class Frame {
                         <div id="answerBox"></div>
                     </div>
                     <div class="optionBox">
+                        <div id="current-gamer"></div>
                         <div id="inputBox">
                             <input type="text" id="inputField" placeholder="Enter your answer here">
                         </div>
@@ -28,7 +29,7 @@ class Frame {
                         </div>
                     </div>
                 </div>
-                <div class="teamBox">
+                <div class="teamBox" id="teamBox-right">
                     <div id="scorebarRight">
                         <div>Points: </div>
                         <div id="scoreblue">0</div>    

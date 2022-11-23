@@ -3,14 +3,14 @@ import { questionData } from './data.js';
 import { Question } from './question.js';
 
 class Tools {
-    static gamesList = [];
+    static gamersList = [];
     static answersList = [];
+    static currentTeam = null;
     static currentQuestion = 1;
 
     static init() {
         // set background image
-        let body = document.querySelector('body');
-        body.style.backgroundImage = `url(../public/bgImage.jpeg)`;
+        Tools.initCurrentGamer();
 
     }
 
@@ -28,25 +28,30 @@ class Tools {
     static initGamer() {
         // add red team gamers
         const redTeamGamer1 = new Avatar('red');
+        Tools.gamersList.push(redTeamGamer1);
         const redTeamGamer2 = new Avatar('red');
+        Tools.gamersList.push(redTeamGamer2);
         const redTeamGamer3 = new Avatar('red');
+        Tools.gamersList.push(redTeamGamer3);
         const redTeamGamer4 = new Avatar('red');
+        Tools.gamersList.push(redTeamGamer4);
         // add blue team gamers
         const blueTeamGamer1 = new Avatar('blue');
+        Tools.gamersList.push(blueTeamGamer1);
         const blueTeamGamer2 = new Avatar('blue');
+        Tools.gamersList.push(blueTeamGamer2);
         const blueTeamGamer3 = new Avatar('blue');
+        Tools.gamersList.push(blueTeamGamer3);
         const blueTeamGamer4 = new Avatar('blue');
+        Tools.gamersList.push(blueTeamGamer4);
 
         // get avatar width
         let avatarobj = document.getElementsByClassName('avatar')[0];
         let avatarComputedStyleWidth = window.getComputedStyle(avatarobj).width;
 
         $(".avatar").css("height", avatarComputedStyleWidth);
-        //$(".name-input").css("width", avatarComputedStyleWidth);
-        // console.log(avatarComputedStyleWidth);
-        // set avatar box height
-        // let avatarBox = document.querySelector('.avatarBox');
-        // avatarBox.style.height = avatarWidth + 'px';
+
+
     }
 
 
@@ -68,10 +73,34 @@ class Tools {
             Tools.answersList.push(question);
         }
     }
+    static initCurrentGamer() {
+        let avatarobj = document.getElementById('current-gamer');
+        let avatarComputedStyleH = window.getComputedStyle(avatarobj).height;
+
+        $("#current-gamer").css("width", avatarComputedStyleH);
+    }
+
+
 
     static initOKBtn() {
+
         $("#okayBtn").on('click', function () {
+            // check input
             let answer = $('#inputField').val();
+            if (answer === "") {
+                console.log("please input answer");
+                return;
+            }
+
+
+            // check gamer
+            console.log("check gamer disabled");
+            // if (!Tools.checkGamer()) {
+            //     console.log("please input gamer name");
+            //     return;
+            // }
+
+
             let flag = false;
 
             for (let i = 0; i < Tools.answersList.length; i++) {
@@ -85,10 +114,28 @@ class Tools {
 
             if (flag) {
                 Tools.showSuccess();
+                Tools.updateScore();
             } else {
                 Tools.showFail();
             }
         });
+
+        //set enter key
+        $('#inputField').on('keypress', function (e) {
+            if (e.which == 13) {
+                $("#okayBtn").click();
+            }
+        });
+    }
+    static checkGamer() {
+        let flag = true;
+        $(".avatar").each(function () {
+            if ($(this).text() === "") {
+                flag = false;
+            }
+        });
+
+        return flag;
     }
 
     static showSuccess() {
@@ -102,8 +149,7 @@ class Tools {
             content: `<img class="gifImage" src="../public/correct/${Tools.getRandIntNum()}.gif" style="width:400px">`,
             area: '400px'
         });
-
-        Tools.showParty("red");
+        Tools.showParty();
     }
 
     static showFail() {
@@ -118,11 +164,15 @@ class Tools {
             area: '400px'
         });
 
-        Tools.showParty("blue");
     }
 
-    static showParty(team) {
-        let teamName = team.toLowerCase();
+    static showParty() {
+        if (Tools.currentTeam === null) {
+            console.log("please select team");
+            return;
+        }
+
+        let teamName = Tools.currentTeam.toLowerCase();
         let teamObj = null;
         if (teamName === 'red') {
             teamObj = document.getElementById("avatarBoxLeft");
@@ -146,7 +196,9 @@ class Tools {
         return Math.floor(Math.random() * (max - min + 1) + min);
     }
 
-    static updateScore(color) {
+    static updateScore() {
+        let color = Tools.currentTeam;
+
         let score = document.querySelector(`#score${color}`);
         let scoreNum = parseInt(score.innerHTML);
         scoreNum += 100;
