@@ -72,7 +72,7 @@
 
 #avatarBoxLeft,
 #avatarBoxRight {
-    padding: 80px;
+    padding: 15px;
     height: 80%;
     background-color: purple;
     display: flex;
@@ -101,12 +101,16 @@
 
 #scorebarLeft,
 #scorebarRight {
-    width: 100%;
-    height: 20%;
+    width: 72%;
+    height: 11%;
     background-color: pink;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    padding: 5vh 3vh 0 3vh;
+    color: #000;
+    font-size: 20px;
+    font-weight: bold;
 }
 
 #feudBox {
@@ -134,10 +138,4 @@
     background-color: blueviolet;
     box-sizing: border-box;
     padding: 20px;
-}
-
-.gifImage {
-    /*  on the center of screen */
-    /* width: 100%;
-    height: auto; */
 }
