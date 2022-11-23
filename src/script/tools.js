@@ -87,6 +87,9 @@ class Tools {
         $("#okayBtn").on('click', function () {
             // check input
             let answer = $('#inputField').val();
+            //  delect both side space
+            answer = answer.trim();
+            answer = answer.toLowerCase();
             if (answer === "") {
                 console.log("please input answer");
                 return;
@@ -100,24 +103,41 @@ class Tools {
             //     return;
             // }
 
+            // check current gamer
+            if (Tools.currentTeam === null) {
+                console.log("please select team");
+                return;
+            }
+
 
             let flag = false;
 
+
             for (let i = 0; i < Tools.answersList.length; i++) {
                 let question = Tools.answersList[i];
+                if (question.correct) {
+                    flag = "exist";
+                    break;
+                }
+
                 let res = question.checkAnswer(answer);
                 if (res) {
                     flag = true;
                     break;
                 }
             }
-
-            if (flag) {
+            // console.log(flag);
+            if (flag == "exist") {
+                alert("Answer already exist");
+            } else if (flag) {
                 Tools.showSuccess();
                 Tools.updateScore();
             } else {
                 Tools.showFail();
             }
+
+            // check if round finish
+            Tools.ifFinish();
         });
 
         //set enter key
@@ -126,7 +146,22 @@ class Tools {
                 $("#okayBtn").click();
             }
         });
+
+
     }
+
+    static ifFinish() {
+        let answersNum = 0;
+
+        for (let i = 0; i < Tools.answersList.length; i++) {
+            let question = Tools.answersList[i];
+            if (question.correct) {
+                answersNum++;
+            }
+        }
+        console.log("answersNum: " + answersNum);
+    }
+
     static checkGamer() {
         let flag = true;
         $(".avatar").each(function () {
@@ -139,7 +174,6 @@ class Tools {
     }
 
     static showSuccess() {
-        console.log("right");
         let index = layer.open({
             type: 1,
             title: false,

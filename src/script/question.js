@@ -4,6 +4,7 @@ class Question {
     constructor(answer, correct) {
         this.answer = answer;
         this.correct = correct;
+        this.answerObj = null;
         this.init();
     }
 
@@ -18,6 +19,7 @@ class Question {
         question.innerHTML = `
             <div class="answer-text">${this.answer}</div>
         `;
+        this.answerObj = question;
         return question;
     }
 
@@ -27,9 +29,11 @@ class Question {
 
 
     checkAnswer(ans) {
-        if (ans === this.answer) {
+        if (ans === this.answer.toLowerCase()) {
             //console.log('Correct answer!');
             this.correct = true;
+            this.answerObj.children[0].style.display = 'inline-block';
+
             return true;
         } else {
             //console.log('Wrong answer. Try again :)');
