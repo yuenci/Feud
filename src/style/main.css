@@ -1,4 +1,4 @@
-#feudContainer{
+#feudContainer {
     margin: 5vh 6% 0;
     /* padding: 15%; */
     background-color: #000;
@@ -8,21 +8,21 @@
     justify-content: space-between;
 }
 
-#mainBox{
+#mainBox {
     width: 65%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 }
 
-#feudBox{
+#feudBox {
     width: 100%;
     height: 85%;
     margin: 3vh 0px;
     background-color: green;
 }
 
-.teamBox{
+.teamBox {
     /* width: 10%; */
     height: auto;
     background-color: red;
@@ -33,19 +33,19 @@
     justify-content: space-between;
 }
 
-.optionBox{
+.optionBox {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
 }
 
-#inputBox{
+#inputBox {
     width: 90%;
     height: 100%;
     background-color: yellow;
 }
 
-#inputField{
+#inputField {
     width: 100%;
     height: 95%;
     background-color: white;
@@ -54,11 +54,11 @@
     padding-left: 15px;
 }
 
-#inputField:focus{
+#inputField:focus {
     outline: none;
 }
 
-#okayBtn{
+#okayBtn {
     height: 100%;
     width: 8%;
     background-color: orange;
@@ -66,11 +66,12 @@
     justify-content: center;
 }
 
-#okayBtn div{
+#okayBtn div {
     margin: 10px;
 }
 
-#avatarBoxLeft, #avatarBoxRight{
+#avatarBoxLeft,
+#avatarBoxRight {
     padding: 80px;
     height: 80%;
     background-color: purple;
@@ -79,7 +80,7 @@
     justify-content: space-between;
 }
 
-.btn{
+.btn {
     color: white;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 24px;
@@ -88,21 +89,49 @@
     cursor: pointer;
 }
 
-.btn #btnImg{
+.btn #btnImg {
     background-color: aquamarine;
 }
 
-.btn img{
+.btn img {
     width: 30px;
     height: 30px;
     margin: 1vh 15px 0;
 }
 
-#scorebarLeft, #scorebarRight{
+#scorebarLeft,
+#scorebarRight {
     width: 100%;
     height: 20%;
     background-color: pink;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+}
+
+#feudBox {
+    display: flex;
+    flex-direction: column;
+}
+
+#questionBox {
+    height: 10%;
+    background-color: pink;
+    /* put text in the center of box */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+#answerBox {
+    height: 90%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    background-color: blueviolet;
+    box-sizing: border-box;
+    padding: 20px;
 }

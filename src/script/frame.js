@@ -12,7 +12,10 @@ class Frame {
                 <div id="avatarBoxLeft"></div>
                 </div>
                 <div id="mainBox">
-                    <div id="feudBox"></div>
+                    <div id="feudBox">
+                        <div id="questionBox"></div>
+                        <div id="answerBox"></div>
+                    </div>
                     <div class="optionBox">
                         <div id="inputBox">
                             <input type="text" id="inputField" placeholder="Enter your answer here">

@@ -1,9 +1,9 @@
+import '../style/question.css';
+
 class Question {
-    constructor(question, answer, correct) {
-        this.question = question;
+    constructor(answer, correct) {
         this.answer = answer;
         this.correct = correct;
-
         this.init();
     }
 
@@ -16,13 +16,13 @@ class Question {
         const question = document.createElement('div');
         question.classList.add('question-container');
         question.innerHTML = `
-            <div class="answer-text">Show encouragement</div>
+            <div class="answer-text">${this.answer}</div>
         `;
         return question;
     }
 
     render(question) {
-        $("#questionBox").append(question);
+        $("#answerBox").append(question);
     }
 
 
@@ -34,3 +34,5 @@ class Question {
         }
     }
 }
+
+export { Question };
