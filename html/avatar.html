@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #container {
+            width: 100px;
+            height: 500px;
+            background-color: yellow;
+        }
+
+        .avatar-container {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background-color: blue;
+            margin-bottom: 10px;
+            text-align: center;
+            font-size: 50px;
+            line-height: 100px;
+            color: white;
+        }
+
+        .avatar:hover {
+            cursor: pointer;
+        }
+
+        .name-input {
+            margin: 0;
+            padding: 0;
+            width: 80px;
+            height: 30px;
+            border-radius: 5px;
+            border: 0px solid #ccc;
+            padding: 0 10px;
+        }
+
+        .name-input:focus {
+            outline: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <div class="avatar-container">
+            <div class="avatar">A</div>
+            <div class="name-input-container">
+                <input type="text" class="name-input">
+            </div>
+        </div>
+
+        <div class="avatar-container">
+            <div class="avatar">B</div>
+            <div class="name-input-container">
+                <input type="text" class="name-input">
+            </div>
+        </div>
+    </div>
+
+    <script src="../src/script/jquery.min.js"></script>
+    <script>
+
+
+        $('.name-input').on('keypress', function (e) {
+            if (e.keyCode === 13) {
+                const name = $(this).val();
+                const firstLetter = name.charAt(0).toUpperCase();
+                // get parent brother element
+                const avatar = $(this).parent().prev();
+                avatar.text(firstLetter);
+                // disable input
+                $(this).attr('disabled', true);
+            }
+        });
+
+        $('.name-input-container').on('click', function () {
+            const input = $(this).children();
+            input.attr('disabled', false);
+            input.focus();
+        });
+    </script>
+</body>
+
+</html>

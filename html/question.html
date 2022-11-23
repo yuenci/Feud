@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #cards-container {
+            width: 800px;
+            height: 600px;
+            background-color: aqua;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: space-around;
+
+        }
+
+        .question-container {
+            width: 45%;
+            height: 20%;
+            background-color: pink;
+            border-radius: 10px;
+            box-sizing: border-box;
+            padding: 10px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .question-container:hover {
+            cursor: pointer;
+        }
+
+        .answer-text {
+            word-wrap: break-word;
+            font-size: 25px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="cards-container">
+        <div class="question-container">
+            <div class="answer-text">Show encouragement</div>
+        </div>
+        <div class="question-container">
+            <div class="answer-text">
+                <div class="answer-text">Skipping work culture</div>
+            </div>
+        </div>
+        <div class="question-container">
+
+        </div>
+    </div>
+    <script src="../src/script/jquery.min.js"></script>
+</body>
+
+</html>

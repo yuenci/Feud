@@ -1,0 +1,23 @@
+.question-container {
+    width: 45%;
+    height: 20%;
+    background-color: pink;
+    border-radius: 10px;
+    box-sizing: border-box;
+    padding: 10px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.question-container:hover {
+    cursor: pointer;
+}
+
+.answer-text {
+    word-wrap: break-word;
+    font-size: 25px;
+    font-weight: bold;
+    display: none;
+}
