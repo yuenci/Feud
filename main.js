@@ -7,6 +7,6 @@ import { Tools } from "./src/script/tools";
 
 Frame.render();
 Tools.initGamer();
-
+Tools.initQustion();
 
 

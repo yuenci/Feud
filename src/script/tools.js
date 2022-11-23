@@ -1,7 +1,10 @@
 import { Avatar } from '../script/avatar.js';
+import { questionData } from './data.js';
+import { Question } from './question.js';
 
 class Tools {
     static gamesList = [];
+    static currentQuestion = 1;
     static clearFeudAnswers() {
         const feud = document.querySelectorAll('#feudBox');
         const childs = feud[0].childNodes;
@@ -28,6 +31,21 @@ class Tools {
 
 
     static initQustion() {
+        // number to string
+
+        let currentQuestionNum = Tools.currentQuestion.toString();
+        let currentQuestion = questionData[currentQuestionNum];
+        let question = currentQuestion.question;
+
+        $('#questionBox').text(question);
+
+        let answers = currentQuestion.answers;
+        // console.log(answers);
+        // for 8
+        for (let i = 1; i <= 8; i++) {
+            let answer = answers[i.toString()];
+            let question = new Question(answer, false);
+        }
 
     }
 }

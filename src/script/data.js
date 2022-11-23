@@ -1,7 +1,7 @@
 let questionData = {
-    "q1": {
+    "1": {
         "question": "Name a reason a coworker might give you a high five",
-        "answer": {
+        "answers": {
             "1": "Show Encouragement",
             "2": "Nailed a Presentation",
             "3": "Had a Good Idea",
@@ -12,9 +12,9 @@ let questionData = {
             "8": "Show Respect",
         }
     },
-    "q2": {
+    "2": {
         "question": "Name a culture that could improve colleages relationship",
-        "answer": {
+        "answers": {
             "1": "Gathering Culture",
             "2": "Napping Culture",
             "3": "Chatting Culture",
@@ -25,9 +25,9 @@ let questionData = {
             "8": "Food culture",
         }
     },
-    "q3": {
+    "3": {
         "question": "Name somewhere in an office you might run into a colleague and stop for a chat",
-        "answer": {
+        "answers": {
             "1": "Break room",
             "2": "Washroom",
             "3": "Copy Room",
@@ -39,3 +39,5 @@ let questionData = {
         }
     }
 }
+
+export { questionData };
