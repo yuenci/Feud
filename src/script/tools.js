@@ -6,12 +6,11 @@ class Tools {
     static gamersList = [];
     static answersList = [];
     static currentTeam = null;
-    static currentQuestion = 1;
+    static currentQuestion = 3;
 
     static init() {
         // set background image
         Tools.initCurrentGamer();
-
     }
 
 
@@ -56,7 +55,11 @@ class Tools {
 
 
     static initQustion() {
-        // number to string
+        // reset answers list and remove all answers
+
+        Tools.answersList = [];
+        $("#answerBox").empty();
+
 
         let currentQuestionNum = Tools.currentQuestion.toString();
         let currentQuestion = questionData[currentQuestionNum];
@@ -115,22 +118,21 @@ class Tools {
 
             for (let i = 0; i < Tools.answersList.length; i++) {
                 let question = Tools.answersList[i];
-                if (question.correct) {
-                    flag = "exist";
-                    break;
-                }
-
-                let res = question.checkAnswer(answer);
-                if (res) {
-                    flag = true;
-                    break;
+                if (question.correct === false) {
+                    let res = question.checkAnswer(answer);
+                    if (res) {
+                        flag = true;
+                        break;
+                    }
+                } else {
+                    flag = "exist"
                 }
             }
             // console.log(flag);
             if (flag == "exist") {
                 alert("Answer already exist");
             } else if (flag) {
-                Tools.showSuccess();
+                //Tools.showSuccess();
                 Tools.updateScore();
             } else {
                 Tools.showFail();
@@ -160,6 +162,15 @@ class Tools {
             }
         }
         console.log("answersNum: " + answersNum);
+
+        if (answersNum == 8) {
+            Tools.currentQuestion++;
+            if (Tools.currentQuestion == 4) {
+                console.log("game over");
+            } else {
+                Tools.initQustion();
+            }
+        }
     }
 
     static checkGamer() {
