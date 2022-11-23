@@ -3,13 +3,29 @@ class Question {
         this.question = question;
         this.answer = answer;
         this.correct = correct;
+
+        this.init();
     }
-    displayQuestion() {
-        console.log(this.question);
-        for (let i = 0; i < this.answer.length; i++) {
-            console.log(i + ': ' + this.answer[i]);
-        }
+
+    init() {
+        const question = this.createElement();
+        this.render(question);
     }
+
+    createElement() {
+        const question = document.createElement('div');
+        question.classList.add('question-container');
+        question.innerHTML = `
+            <div class="answer-text">Show encouragement</div>
+        `;
+        return question;
+    }
+
+    render(question) {
+        $("#questionBox").append(question);
+    }
+
+
     checkAnswer(ans) {
         if (ans === this.correct) {
             console.log('Correct answer!');

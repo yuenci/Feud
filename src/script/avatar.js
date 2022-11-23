@@ -17,8 +17,10 @@ class Avatar {
         avatar.classList.add('avatar-container');
         avatar.style.background = this.color;
         avatar.innerHTML = `
-            <div class="avatar"></div>
-            <input type="text" class="name-input">
+            <div class="avatar">B</div>
+            <div class="name-input-container">
+                <input type="text" class="name-input">
+            </div>
         `;
         return avatar;
     }
@@ -34,6 +36,12 @@ class Avatar {
                 // read only
                 $(this).attr('readonly', true);
             }
+        });
+
+        $avatar.find('.name-input-container').on('click', function () {
+            const input = $(this).children();
+            input.attr('disabled', false);
+            input.focus();
         });
         return $avatar;
     }
