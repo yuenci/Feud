@@ -50,8 +50,6 @@ Use the `BLANK_README.md` to get started.
 
 ### Built With
 
-This section should list any major frameworks/libraries used to bootstrap your project. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
-
 * [Jquery.js](https://jquery.com/) - A library is designed to simplify the client-side scripting of HTML
 * [Party.js](https://party.js.org/) - A JavaScript library intended to provide customizeable particle effects to browser environments
 * [Layer.js](https://layuion.com/layer/) - A popular Web pop-up layer component.
@@ -61,10 +59,6 @@ This section should list any major frameworks/libraries used to bootstrap your p
 <!-- GETTING STARTED -->
 
 ## Getting Started
-
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
-
 
 ### Installation
 
