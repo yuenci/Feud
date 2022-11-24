@@ -10,6 +10,6 @@ Tools.init();
 Tools.initGamer();
 Tools.initQustion();
 Tools.initOKBtn();
-
+//Tools.text();
 
 

@@ -65,7 +65,6 @@ class Tools {
         Tools.answersList = [];
         $("#answerBox").empty();
 
-
         let currentQuestionNum = Tools.currentQuestion.toString();
         let currentQuestion = questionData[currentQuestionNum];
         let question = currentQuestion.question;
@@ -184,6 +183,17 @@ class Tools {
                     </div>`,
             area: '800px,300px'
         });
+
+        let title = document.getElementById("winTitle");
+
+        // call many times
+        setInterval(function () {
+            party.confetti(title, {
+                count: party.variation.range(150, 200),
+                spread: party.variation.range(60, 80),
+                size: party.variation.range(1.5, 2)
+            });
+        }, 2000);
     }
 
 
