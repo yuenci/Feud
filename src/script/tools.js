@@ -6,7 +6,8 @@ class Tools {
     static gamersList = [];
     static answersList = [];
     static currentTeam = null;
-    static currentQuestion = 3;
+    static currentQuestion = 1;
+    static gameStatus = false;
 
     static init() {
         // set background image
@@ -55,7 +56,11 @@ class Tools {
 
 
     static initQustion() {
+        if (Tools.currentQuestion != 1) {
+            Tools.showRound();
+        }
         // reset answers list and remove all answers
+
 
         Tools.answersList = [];
         $("#answerBox").empty();
@@ -83,11 +88,116 @@ class Tools {
         $("#current-gamer").css("width", avatarComputedStyleH);
     }
 
+    static showRound() {
+        let index = layer.open({
+            type: 1,
+            title: false,
+            closeBtn: 0,
+            skin: 'layui-layer-nobg', //没有背景色
+            content: `<h1 id="roundNum">Round ${Tools.currentQuestion}<h1>`,
+            area: '400px'
+        });
+
+        // wait 2s and close
+        setTimeout(function () {
+            layer.close(index);
+        }, 2000);
+    }
+
+    static showWinnerTeam() {
+        let score1 = $("#scorered").text();
+        let score2 = $("#scoreblue").text();
+        //string to int
+        score1 = parseInt(score1);
+        score2 = parseInt(score2);
+
+        if (score1 > score2) {
+            Tools.winnerWindow("red");
+        } else if (score1 < score2) {
+            Tools.winnerWindow("blue");
+        } else {
+            layer.open({
+                type: 1,
+                title: false,
+                closeBtn: 0,
+                skin: 'layui-layer-nobg', //没有背景色
+                content: `<h1 id="roundNum">Dead Heat<h1>`,
+                area: '400px'
+            });
+        }
+    }
+    static text() {
+        $("#scorered").on("click", function () {
+            Tools.winnerWindow("red");
+        });
+    }
+
+    static winnerWindow(winner) {
+        let obj = null;
+        let bgc = null;
+        if (winner === "red") {
+            obj = $("#avatarBoxLeft");
+            bgc = "#ff6b6b"
+        } else {
+            obj = $("#avatarBoxRight");
+            bgc = "#339af0"
+        }
+        console.log(obj);
+
+        let winnerNameList = [];
+
+        obj.find(".name-input").each(function () {
+            if ($(this).val() !== "") {
+                winnerNameList.push($(this).val());
+            }
+        });
+
+
+
+        console.log(winnerNameList);
+
+        layer.open({
+            type: 1,
+            title: false,
+            closeBtn: 0,
+            skin: 'layui-layer-nobg', //没有背景色
+            content: `<div id="winCon">
+                        <h1 id="winTitle">Winner!!</h1>
+                        <div id="avaGroup">
+                        <div class="avaCon">
+                            <div class="ava" style="background-color:${bgc}">${winnerNameList[0].charAt(0).toUpperCase()}</div>
+                            <p class="winName">${winnerNameList[0]}</p>
+                        </div>
+                        <div class="avaCon">
+                            <div class="ava" style="background-color:${bgc}">${winnerNameList[1].charAt(0).toUpperCase()}</div>
+                            <p class="winName">${winnerNameList[1]}</p>
+                        </div>
+                        <div class="avaCon">
+                            <div class="ava" style="background-color:${bgc}">${winnerNameList[2].charAt(0).toUpperCase()}</div>
+                            <p class="winName">${winnerNameList[2]}</p>
+                        </div>
+                        <div class="avaCon">
+                            <div class="ava" style="background-color:${bgc}">${winnerNameList[3].charAt(0).toUpperCase()}</div>
+                            <p class="winName">${winnerNameList[3]}</p>
+                        </div>
+                        </div>
+                    </div>`,
+            area: '800px,300px'
+        });
+    }
+
 
 
     static initOKBtn() {
 
         $("#okayBtn").on('click', function () {
+            console.log(Tools.getOKBtnObj().innerHTML);
+            if (Tools.getOKBtnObj().innerHTML === "&gt;") {
+                Tools.initQustion();
+                Tools.getOKBtnObj().innerHTML = "OK";
+            }
+
+
             // check input
             let answer = $('#inputField').val();
             //  delect both side space
@@ -100,11 +210,11 @@ class Tools {
 
 
             // check gamer
-            console.log("check gamer disabled");
-            // if (!Tools.checkGamer()) {
-            //     console.log("please input gamer name");
-            //     return;
-            // }
+            //console.log("check gamer disabled");
+            if (Tools.checkGamerNum() !== 8) {
+                console.log("please input gamer name");
+                return;
+            }
 
             // check current gamer
             if (Tools.currentTeam === null) {
@@ -112,9 +222,9 @@ class Tools {
                 return;
             }
 
-
             let flag = false;
-
+            // check answer
+            // what is right answer: 
 
             for (let i = 0; i < Tools.answersList.length; i++) {
                 let question = Tools.answersList[i];
@@ -125,15 +235,16 @@ class Tools {
                         break;
                     }
                 } else {
-                    flag = "exist"
+                    flag = false;
                 }
             }
             // console.log(flag);
             if (flag == "exist") {
                 alert("Answer already exist");
             } else if (flag) {
-                //Tools.showSuccess();
+                Tools.showSuccess();
                 Tools.updateScore();
+                $("#inputField").val("");
             } else {
                 Tools.showFail();
             }
@@ -167,21 +278,26 @@ class Tools {
             Tools.currentQuestion++;
             if (Tools.currentQuestion == 4) {
                 console.log("game over");
+                Tools.showWinnerTeam();
             } else {
-                Tools.initQustion();
+                Tools.getOKBtnObj().innerHTML = ">";
             }
         }
     }
 
-    static checkGamer() {
-        let flag = true;
+    static getOKBtnObj() {
+        return document.getElementById("okayBtn").children[0];
+    }
+
+    static checkGamerNum() {
+        let num = 0;
         $(".avatar").each(function () {
-            if ($(this).text() === "") {
-                flag = false;
+            if ($(this).text() !== "") {
+                num++;
             }
         });
 
-        return flag;
+        return num;
     }
 
     static showSuccess() {

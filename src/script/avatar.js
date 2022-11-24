@@ -41,6 +41,11 @@ class Avatar {
                 const firstLetter = this.name.charAt(0).toUpperCase();
                 nameAvatar.innerHTML = firstLetter;
                 $(nameInput).attr('disabled', true);
+
+                if (Tools.checkGamerNum() === 8 && Tools.gameStatus === false) {
+                    Tools.showRound();
+                    Tools.gameStatus = true;
+                }
             }
         });
 
