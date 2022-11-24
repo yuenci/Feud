@@ -1,6 +1,6 @@
 body {
     background-size: cover;
-    background-image: url("public/bgImage.jpeg");
+    background-image: url("/bgImage.jpeg");
 }
 
 #feudContainer {
